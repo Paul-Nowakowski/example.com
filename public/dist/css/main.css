@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Sacramento");
+* {
+  font-family: 'Open Sans', sans-serif; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+header {
+  height: 50px;
+  background: #000;
+  color: #fff;
+  padding: 0 .5rem 0 1em; }
+
+header nav {
+  float: right; }
+
+header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: square; }
+
+header nav ul li {
+  display: inline; }
+
+header nav ul li a,
+header nav ul li a:link,
+header nav ul li a:visited {
+  display: inline-block;
+  padding: 0 .5em;
+  color: #fff;
+  line-height: 50px;
+  text-decoration: none; }
+
+header .logo {
+  line-height: 50px;
+  font-weight: bold; }
+
+header nav ul li a:hover {
+  background: #a10b0b; }
+
+.bio {
+  font-family: 'Sacramento', cursive; }
+
+.avatar {
+  border-radius: 50%;
+  float: left;
+  margin-right: lem; }
+
+main {
+  /* Use a margin to center the page */
+  margin: 0 auto;
+  /* Set the width of the content */
+  width: 960px;
+  /* For samller screens to not exceed the max screen width */
+  max-width: 90%; }
+
+#toggleMenu {
+  display: none; }
+
+label {
+  display: block; }
+
+@media only screen and (max-width: 960px) {
+  header nav {
+    position: absolute;
+    display: none;
+    background: black;
+    top: 50px;
+    left: 0px;
+    right: 0px; }
+
+  #toggleMenu {
+    display: block;
+    float: right;
+    line-height: 50px; }
+
+  header nav ul li a,
+  header nav ul li a:link,
+  header nav ul li a:visited {
+    display: block;
+    border-bottom: 1px solid #777; }
+
+  header {
+    position: relative; } }
