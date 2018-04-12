@@ -37,6 +37,29 @@ if(!empty($input)){
   $valid->check($_POST);
 
   if(empty($valid->errors)){
+
+    require '../vendor/autoload.php';
+    require '../../config.php';
+    //use Mailgun\Mailgun;
+    $mgClient = new \Mailgun\Mailgun(MG_KEY);
+    $domain = MG_DOMAIN;
+
+    $result = $mgClient->sendMessage(
+  $domain,
+  [
+    'from'=>"Mailgun Sandbox <postmaster@{$domain}>",
+    'to'=>'Paul N <tuner777@yahoo.com>',
+    'subject'=>$input['subject'],
+    'html'=>"<b>Name</b>: {$input['name']}<br><br>" .
+    "<b>Email</b>: {$input['email']}<br><br>" .
+    "<b>Message</b><br>{$input['message']}"
+    {$input['message']}
+  ]
+
+    );
+
+
+    
     header('LOCATION: thanks.html');
 
    
