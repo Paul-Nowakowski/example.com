@@ -52,8 +52,8 @@ if(!empty($input)){
     'subject'=>$input['subject'],
     'html'=>"<b>Name</b>: {$input['name']}<br><br>" .
     "<b>Email</b>: {$input['email']}<br><br>" .
-    "<b>Message</b><br>{$input['message']}"
-    {$input['message']}
+    "<b>Message</b><br>{$input['message']}" 
+   
   ]
 
     );
@@ -65,37 +65,15 @@ if(!empty($input)){
    
   }else{
     $message = "<div class=\"message-error\">the form has errors!</div>";
-  }}
-
-?>
-
-<!DOCTYPE html>
-
-  <html lang="en">
-      <head>
-    <meta charset="UTF-8">
-    <title>paul N</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./dist/main.css">
-  </head>
-  <body>
-    
-        
-                <header>
-                        <span class="logo">My WebSite</span>
-                        <a id="toggleMenu">Menu</a>
-                        <nav>
-                          <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="resume.html">Resume</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                          </ul>
-                        </nav>
-                      </header>
-        
-    <main>
+  }
+}
+  $message = (!empty($message)?$message:null);
+  $pageTitle = "Contact "
+  $description = "Hello, send me something";
+$content = <<<EOT
+<main>
       <h1> contact paul</h1>
-      <?php echo (!empty($message)?$message:null); ?>
+     {$message}
     <form action="contact.php" method="POST">
       
       <input type="hidden" name="subject" value="honey">
@@ -104,9 +82,9 @@ if(!empty($input)){
       
       <div>
         <label for="name">Name</label>
-        <input id="name" type="text" name="name" value="<?php echo $valid->userInput('name'); ?>">
+        <input id="name" type="text" name="name" value="{$valid->userInput('name')}">
         <div class="message-error">
-          <?php echo $valid->error('name'); ?>
+           {$valid->error('name')}
         </div>
 
       </div>
@@ -114,9 +92,9 @@ if(!empty($input)){
        
        <div>
         <label for="email">Email</label>
-        <input id="email" type="text" name="email" value="<?php echo $valid->userInput('email'); ?>">
+        <input id="email" type="text" name="email" value="{$valid->userInput('email')}">
         <div class="message-error">
-          <?php echo $valid->error('email'); ?>
+           {$valid->error('email')}
         </div>
 
       </div>
@@ -134,20 +112,5 @@ if(!empty($input)){
 
     </form>
 </main>
-    <script>
-
-            var toggleMenu = document.getElementById('toggleMenu');
-            var nav = document.querySelector('nav');
-            toggleMenu.addEventListener(
-              'click',
-              function(){
-                if(nav.style.display=='block'){
-                  nav.style.display='none';
-                }else{
-                  nav.style.display='block';
-                }
-              }
-            );
-          </script>
-  </body>
-</html>
+EOT;
+require '../core/layout.php';
